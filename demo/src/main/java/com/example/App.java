@@ -8,15 +8,16 @@ public class App
 {
     public static void main( String[] args )
     {
-        Pessoa p1 = new Pessoa();
+        Pessoa p1 = new Pessoa("Bruno",22);
         Pessoa p2 = new Pessoa();           
-        
-        p1.setNome("Bruno");
-        p1.setIdade(22);
 
-        p2.setNome("Maria");
         p2.setIdade(25);
+        p2.setNome("Maria");
 
         System.out.println(p1.getNome());
+        System.out.println(p1.getIdade());
+
+        System.out.println(p2.getNome());
+        System.out.println(p2.getIdade());
     }
 }
