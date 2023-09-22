@@ -1,9 +1,18 @@
 package com.example.demo2.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo2.entities.Requisicao;
+import com.example.demo2.repositories.RequisicaoRepository;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 @Service
 public class HelloService {
+
+    @Autowired
+    private RequisicaoRepository requisicaoRepository;
+
     Integer quantidadeGets = 0;
     Integer quantidadePuts = 0;
     Integer quantidadePosts = 0;
@@ -11,23 +20,50 @@ public class HelloService {
 
     public Integer quantidadeGets(){
         // integer  = inteiro
-        return ++quantidadeGets;
+        Requisicao requisicao = requisicaoRepository.getReferenceById(1);
+        Integer getsDoBanco = requisicao.getGets();
+
+        requisicao.setGets(getsDoBanco+1);
+        requisicaoRepository.save(requisicao);
+
+        return requisicao.getGets();
     }
 
     public Integer quantidadePuts(){
         // integer  = inteiro
-        return ++quantidadePuts;
+        Requisicao requisicao = requisicaoRepository.getReferenceById(1);
+
+        Integer putsDoBanco = requisicao.getPuts();
+
+        requisicao.setPuts(putsDoBanco+1);
+        requisicaoRepository.save(requisicao);
+
+        return requisicao.getPuts();
     }
 
     
     public Integer quantidadePosts(){
         // integer  = inteiro
-        return ++quantidadePosts;
+        Requisicao requisicao = requisicaoRepository.getReferenceById(1);
+
+        Integer postsDoBanco = requisicao.getPosts();
+
+        requisicao.setPosts(postsDoBanco+1);
+        requisicaoRepository.save(requisicao);
+
+        return requisicao.getPosts();
     }
 
     public Integer quantidadeDeletes(){
         // integer  = inteiro
-        return ++quantidadeDeletes;
+        Requisicao requisicao = requisicaoRepository.getReferenceById(1);
+
+        Integer deletesDoBanco = requisicao.getDeletes();
+
+        requisicao.setDeletes(deletesDoBanco+1);
+        requisicaoRepository.save(requisicao);
+
+        return requisicao.getDeletes();
     }
 
 }

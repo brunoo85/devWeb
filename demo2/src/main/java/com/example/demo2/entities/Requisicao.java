@@ -28,5 +28,4 @@ public class Requisicao {
      @Column
      private Integer deletes;
 
-
 }
